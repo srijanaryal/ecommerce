@@ -1,3 +1,4 @@
+import 'package:ecommerce/models/category_model.dart';
 import 'package:ecommerce/screens/home_page.dart';
 import 'package:ecommerce/screens/screens.dart';
 import 'package:ecommerce/screens/wishlist/wishlist_screen.dart';
@@ -21,7 +22,7 @@ class AppRouter {
       case ProductScreen.routeName:
         return ProductScreen.route();
       case CatalogScreen.routeName:
-        return CatalogScreen.route();
+        return CatalogScreen.route(category: settings.arguments as Category);
       default:
         return _errorRoute();
     }
