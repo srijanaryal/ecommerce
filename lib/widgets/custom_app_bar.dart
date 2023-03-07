@@ -12,7 +12,11 @@ class custom_app_bar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       actions: [
         IconButton(
-            color: Colors.pink, onPressed: () {}, icon: Icon(Icons.favorite))
+            color: Colors.pink,
+            onPressed: () {
+              Navigator.pushNamed(context, '/wishlist');
+            },
+            icon: Icon(Icons.favorite))
       ],
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -20,7 +24,7 @@ class custom_app_bar extends StatelessWidget with PreferredSizeWidget {
         child: Padding(
           padding: const EdgeInsets.all(25.0),
           child: Text(
-            'Jhakas',
+            title,
             style: TextStyle(
                 color: Colors.pink, fontSize: 26, fontWeight: FontWeight.bold),
           ),
