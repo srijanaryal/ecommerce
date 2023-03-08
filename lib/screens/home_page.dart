@@ -41,7 +41,10 @@ class HomePage extends StatelessWidget {
                 enlargeCenterPage: true,
               ),
               items: Category.categories
-                  .map((Category) => HeroCarousel(category: Category))
+                  .map((Category) => HeroCarousel(
+                        category: Category,
+                        product: null,
+                      ))
                   .toList(),
             ),
           ),
