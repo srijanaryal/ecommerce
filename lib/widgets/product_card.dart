@@ -4,9 +4,11 @@ import '../models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
+  final bool isWishlist;
   const ProductCard({
     Key? key,
     required this.product,
+    this.isWishlist = false,
   }) : super(key: key);
 
   @override
@@ -52,10 +54,17 @@ class ProductCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  IconButton(
-                      color: Colors.pink,
-                      onPressed: () {},
-                      icon: Icon(Icons.add)),
+                  isWishlist
+                      ? Expanded(
+                          child: IconButton(
+                              color: Colors.red,
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.delete,
+                                size: 30,
+                              )),
+                        )
+                      : SizedBox(),
                 ]),
               ),
             ),
