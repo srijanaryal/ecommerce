@@ -1,3 +1,4 @@
+import 'package:ecommerce/models/cart_model.dart';
 import 'package:ecommerce/models/models.dart';
 import 'package:ecommerce/widgets/custom_app_bar.dart';
 import 'package:ecommerce/widgets/custom_nav_bar.dart';
@@ -74,9 +75,18 @@ class CartScreen extends StatelessWidget {
                                   ))
                             ],
                           ),
-                          CartProductCard(product: Product.products[1]),
-                          CartProductCard(product: Product.products[2]),
-                          CartProductCard(product: Product.products[3]),
+                          SizedBox(
+                            height: 400,
+                            child: ListView.separated(
+                              itemCount: Cart().products.length,
+                              separatorBuilder: (context, index) =>
+                                  SizedBox(height: 10),
+                              itemBuilder: (context, index) {
+                                return CartProductCard(
+                                    product: Product.products[index]);
+                              },
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -102,7 +112,7 @@ class CartScreen extends StatelessWidget {
                                         fontStyle: FontStyle.italic),
                                   ),
                                   Text(
-                                    '\Rs 10520',
+                                    '${Cart().subtotalString}',
                                     style: TextStyle(
                                         color: Colors.pink,
                                         fontWeight: FontWeight.bold,
@@ -125,7 +135,7 @@ class CartScreen extends StatelessWidget {
                                         fontStyle: FontStyle.italic),
                                   ),
                                   Text(
-                                    '\Rs 20',
+                                    '${Cart().deliveryFeeString}',
                                     style: TextStyle(
                                       color: Colors.pink,
                                       fontWeight: FontWeight.bold,
@@ -166,7 +176,7 @@ class CartScreen extends StatelessWidget {
                                               fontStyle: FontStyle.italic),
                                         ),
                                         Text(
-                                          '\Rs 10540',
+                                          '${Cart().totalString}',
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
