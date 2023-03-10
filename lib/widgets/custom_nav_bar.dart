@@ -20,15 +20,15 @@ class CustomNavBar extends StatelessWidget {
                 icon: Icon(Icons.home),
                 color: Colors.pink,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/');
+                  Navigator.pushNamed(context, '/WishListScreen');
                 },
               ),
               IconButton(
                 iconSize: 30,
-                icon: Icon(Icons.shopping_bag),
+                icon: Icon(Icons.face),
                 color: Colors.pink,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/CartScreen');
+                  Navigator.pushNamed(context, '/cart');
                 },
               ),
               IconButton(

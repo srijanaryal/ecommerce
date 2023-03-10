@@ -14,7 +14,7 @@ class custom_app_bar extends StatelessWidget with PreferredSizeWidget {
         IconButton(
             color: Colors.pink,
             onPressed: () {
-              Navigator.pushNamed(context, '/wishlist');
+              Navigator.pushNamed(context, '/');
             },
             icon: Icon(Icons.favorite))
       ],

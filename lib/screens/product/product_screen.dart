@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ecommerce/widgets/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../blocs/cart/cart_bloc.dart';
 
 class ProductScreen extends StatelessWidget {
   static const String routeName = '/product';
@@ -32,36 +35,38 @@ class ProductScreen extends StatelessWidget {
           height: 70,
           child: Expanded(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  iconSize: 30,
-                  icon: Icon(Icons.share),
-                  color: Colors.pink,
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/');
-                  },
-                ),
-                IconButton(
-                  iconSize: 30,
-                  icon: Icon(Icons.favorite),
-                  color: Colors.pink,
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/');
-                  },
-                ),
-                MaterialButton(
-                  color: Colors.pink,
-                  child: Text(
-                    'ADD TO CART',
-                    style: TextStyle(color: Colors.white),
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    iconSize: 30,
+                    icon: Icon(Icons.share),
+                    color: Colors.pink,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/');
+                    },
                   ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/');
-                  },
-                ),
-              ],
-            ),
+                  IconButton(
+                    iconSize: 30,
+                    icon: Icon(Icons.favorite),
+                    color: Colors.pink,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/');
+                    },
+                  ),
+                  BlocBuilder<CartBloc, CartState>(builder: (context, state) {
+                    return MaterialButton(
+                      color: Colors.pink,
+                      child: Text(
+                        'ADD TO CART',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        context.read<CartBloc>().add(CartProductAdded(product));
+                        Navigator.pushNamed(context, '/cart');
+                      },
+                    );
+                  })
+                ]),
           ),
         ),
       ),

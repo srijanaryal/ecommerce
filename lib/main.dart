@@ -1,11 +1,16 @@
 import 'package:ecommerce/config/app_router.dart';
+import 'package:ecommerce/screens/screens.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'blocs/cart/cart_bloc.dart';
 import 'screens/home_page.dart';
 
-void main(List<String> args) {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  // Bloc.observer = ();
   runApp(MyApp());
 }
 
@@ -20,7 +25,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: HomePage.routeName,
+        initialRoute: SplashScreen.routeName,
         home: HomePage(),
       ),
     );

@@ -59,7 +59,9 @@ class ProductCard extends StatelessWidget {
                   ),
                   BlocBuilder<CartBloc, CartState>(builder: (context, state) {
                     if (state is CartLoading) {
-                      return Center(child: CircularProgressIndicator());
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
                     }
                     if (state is CartLoaded) {
                       return Expanded(

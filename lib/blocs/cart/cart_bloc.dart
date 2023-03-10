@@ -1,10 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce/models/cart_model.dart';
-
 import 'package:equatable/equatable.dart';
-
 import 'dart:async';
-
 import '../../models/product_model.dart';
 
 part 'cart_event.dart';

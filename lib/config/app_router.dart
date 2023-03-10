@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
-    print('This is route:$settings.name)');
+    print('Route: ${settings.name}');
 
     switch (settings.name) {
       case '/':
@@ -16,6 +16,8 @@ class AppRouter {
 
       case HomePage.routeName:
         return HomePage.route();
+      case SplashScreen.routeName:
+        return SplashScreen.route();
       case CartScreen.routeName:
         return CartScreen.route();
       case WishlistScreen.routeName:
